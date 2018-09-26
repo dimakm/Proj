@@ -8,23 +8,23 @@ class TheMarker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
+      opened: false,
       animation: 2
     };
-    this.toggleOpen = this.toggleOpen.bind(this);
-    this.toggleClose = this.toggleClose.bind(this);
+    this.clickOpen = this.clickOpen.bind(this);
+    this.clickClose = this.clickClose.bind(this);
   }
 
-  toggleOpen() {
+  clickOpen() {
     this.setState({
-      isOpen: true,
+      opened: true,
       animation: 1
     });
   }
 
-  toggleClose() {
+  clickClose() {
     this.setState({
-      isOpen: false,
+      opened: false,
       animation: 4
     });
   }
@@ -33,13 +33,13 @@ class TheMarker extends Component {
     return (
       <Marker
         position={this.props.center}
-        onClick={this.toggleOpen}
+        onClick={this.clickOpen}
         animation={this.state.animation}
-        title={'Keep It Weird'}
+        title={'Happily Ever After'}
       >
-        {this.state.isOpen && (
-          <InfoWindow onCloseClick={this.toggleClose}>
-            <h3>Info Window</h3>
+        {this.state.opened && (
+          <InfoWindow onCloseClick={this.clickClose}>
+            <h3>Happily Ever After </h3>
           </InfoWindow>
         )}
       </Marker>
