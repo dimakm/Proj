@@ -25,7 +25,7 @@ class App extends Component {
           client_secret: "JLL03C4BYHQ2QNFKJE5H31WWDPWUPJPMMNGJOQBJBS5DKEZG",
           query: query,
           near: location,
-          v: "20182508"
+          v: "20182509"
       }
 
       //Fetch data with axios
@@ -33,7 +33,7 @@ class App extends Component {
         .then(response => {
           this.setState({
             venues: response.data.response.groups[0].items
-          }, /*this.renderMap()*/  console.log(response.data.response.groups[0].items) )
+          },  console.log(response.data.response.groups[0].items) )
         })
         .catch(error => {
              if (error.response) {
