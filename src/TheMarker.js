@@ -9,19 +9,19 @@ class TheMarker extends Component {
     super(props);
     this.state = {
       opened: false,
-      animation: 2
+      animation: 2,
+      title: ""
+
     };
     this.clickOpen = this.clickOpen.bind(this);
     this.clickClose = this.clickClose.bind(this);
   }
-
   clickOpen() {
     this.setState({
       opened: true,
       animation: 1
     });
   }
-
   clickClose() {
     this.setState({
       opened: false,
@@ -32,10 +32,10 @@ class TheMarker extends Component {
   render() {
     return (
       <Marker
-        position={this.props.center}
+      //  position={this.props.center}
         onClick={this.clickOpen}
         animation={this.state.animation}
-        title={'Happily Ever After'}
+        title={this.state.title}
       >
         {this.state.opened && (
           <InfoWindow onCloseClick={this.clickClose}>
