@@ -63,7 +63,7 @@ class App extends Component {
           <TheMap
             center = {this.state.center}
             zoom = {this.state.zoom} 
-            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCElDPaTh_n-WGrsOONc-2eR6eleOkoI-U&v=3.exp&libraries=geometry,places"
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=[KEY]&v=3.exp&libraries=geometry,places"
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `100vh` }} />}
             mapElement={<div style={{ height: `100%` }} />}
