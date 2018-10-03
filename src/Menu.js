@@ -95,7 +95,7 @@ constructor(props) {
 
 
             <div>
-
+/* here's the problem 
 <ul>
      {this.state.venues.map((myVenue) => {
             <li role="menuitem"
@@ -113,7 +113,7 @@ constructor(props) {
         }
           )}
      </ul> 
-                
+              */  
     </div>        
         
             
