@@ -119,53 +119,11 @@ class App extends Component {
         })
     
     } //end initMap
-//------------------------------------
-
-
-/*get_set_options = () => {
-  let ret_array = []
-  filterArray.map((option)=> {
-    if (filterArray.option) {
-      ret_array.push(option)
-    }
-  } )
-  return ret_array;
-}*/
- 
-/*filter_markers = (filterArray) => {  
-  
-  // for each marker, check to see if all required options are set
-  /*this.state.markers.map((marker) => {
-     let  keep=true
-     set_filters.map((ven)=> {
-        if (marker.title != ven.name) {
-        keep = false;
-      }
-    })
-    marker.setVisible(keep)
-  })
-let keep =true;
-  this.state.markers.filter((marker)=>{
-    filterArray.map((ven)=> {
-        if (marker.title = ven.name) {
-        keep = true;
-      }
-      else {keep = false}
-    })
-    marker.setVisible(keep)
-
-  })
-}*/
-
-
-
-//---------------------------------------------
 
 
     updatePlaces = (newPlaces) => {
     
         this.setState({filteredVenues: newPlaces})
-                 //   this.filter_markers(this.state.filteredVenues )
 
     }
 
