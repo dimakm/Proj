@@ -94,7 +94,27 @@ constructor(props) {
 
 
 
+            <div>
+
+<ul>
+     {this.state.venues.map((myVenue) => {
+            <li role="menuitem"
+             onClick={() => this.triggerMarkerClick(myVenue.venue.id)}
+              aria-label={myVenue.venue.name}
+              tabIndex="0"
+              id={myVenue.venue.id}
+              key={myVenue.venue.id}
+            >
+              <br/>
+              <b>{myVenue.venue.name}</b>
+              <br/> 
+              <i>{myVenue.venue.location.address}</i>
+            </li> 
+        }
+          )}
+     </ul> 
                 
+    </div>        
         
             
 
