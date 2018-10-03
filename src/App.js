@@ -43,7 +43,31 @@ class App extends Component {
                         v: "20183009"
         }
 
-       
+    /*------- Fetch the data ---------- */
+        axios.get(endPoint + new URLSearchParams(params)).then(response => {
+            this.setState({
+                venues: response.data.response.groups[0].items,
+                filteredVenues: this.state.venues
+
+            }, this.renderMap)
+            })
+            .catch(error => {
+             if (error.response) {
+              // The request was made and the server responded with a status out of the range 
+               console.log(error.response.data);
+               console.log(error.response.status);
+               console.log(error.response.headers);
+                } else if (error.request) {
+                  // The request was made but didn't get a response
+                  console.log(error.request);
+                } else {
+                  // A problem in setting up the request 
+                  console.log('There is an ERROR', error.message);
+                 } 
+                  console.log("ERROR! " + error )
+
+        })
+    }    
 
     /*----------- The Map-------------- */
     initMap = () => {
