@@ -1,3 +1,6 @@
+main {
+  display: flex;
+}
 .App {
   text-align: center;
 }
@@ -22,25 +25,14 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
- .mapContainer{
-    width:90%;
 
- }
-/*------ the list ---------*/
-.list {
-  background: #fff;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 20px;
-  padding: 20px;
-  position: absolute;
-  -ms-transform: translate(-260px, 0);
-  -webkit-transform: translate(-260px, 0);
-  transform: translate(-300px, 0);
-  transition: transform 0.5s ease;
-  width: 260px;
-  z-index: 5;
+#map {
+    width: 80%;
+   /* height: calc(100vh - 50px);*/
+}
+
+@media all and (max-width: 750px) {
+    #map {
+        width: 100%
+    }
 }
