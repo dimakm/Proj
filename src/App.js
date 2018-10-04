@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './App.css'
 
 // Components
-import Menu from './Components/Menu/Menu'
-import Header from './Components/Header/Header'
+import Menu from './Menu'
+import Header from './Header'
 
 import axios from 'axios'
 
