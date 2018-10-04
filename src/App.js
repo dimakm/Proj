@@ -1,26 +1,28 @@
-
 import React, { Component } from 'react'
 import './App.css'
 
 // Components
-import Menu from './Menu'
-import Header from './Header'
+import Menu from './Components/Menu/Menu'
+import Header from './Components/Header/Header'
 
 import axios from 'axios'
 
 
 class App extends Component {
-
-    state = {
+constructor(props) {
+    super(props) 
+    this.state = {
         venues: [],
         filteredVenues: [],
-        markers: []    }
+        markers: []   }
+    
+}
 
  //code to load the map script 
     renderMap = () => {
         var index  = window.document.getElementsByTagName("script")[0]
         var script = window.document.createElement("script")
-        script.src = "https://maps.googleapis.com/maps/api/js?key=[your-KEY]&callback=initMap"
+        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCElDPaTh_n-WGrsOONc-2eR6eleOkoI-U&callback=initMap"
         script.async = true
         script.defer = true
         script.onerror = function() {
@@ -43,11 +45,11 @@ class App extends Component {
                         v: "20183009"
         }
 
-    /*------- Fetch the data ---------- */
+        /*------- Fetch the data ---------- */
         axios.get(endPoint + new URLSearchParams(params)).then(response => {
             this.setState({
                 venues: response.data.response.groups[0].items,
-                filteredVenues: this.state.venues
+                filteredVenues: response.data.response.groups[0].items
 
             }, this.renderMap)
             })
@@ -67,7 +69,7 @@ class App extends Component {
                   console.log("ERROR! " + error )
 
         })
-    }    
+    }
 
     /*----------- The Map-------------- */
     initMap = () => {
@@ -121,24 +123,28 @@ class App extends Component {
     } //end initMap
 
 
-    updatePlaces = (newPlaces) => {
-    
+   /* updatePlaces = (newPlaces) => {
         this.setState({filteredVenues: newPlaces})
 
-    }
+    }*/
 
     
-    
+
     render() {
         return (
             <div>
                 <Header/>
                 <main>
+                 <ul>
+
+
+                 </ul>
                     <Menu 
                         filteredVenues={this.state.venues} 
                         markers={this.state.markers} 
-                        updatePlaces={this.updatePlaces}
+                        updateQuery={this.updateQuery}
                     />
+                   
                    
                 <div id="map"></div> 
                 </main>
