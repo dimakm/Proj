@@ -5,16 +5,15 @@ import SearchBar from './SearchBar'
 
 // Places Data
 class Menu extends Component {
-constructor(props) {
-    super(props)
-    this.state = {
-        query: '',
-        venues: this.props.venues,
-        filteredVenues: this.props.filteredVenues,
-        notVisibleMarkers: [],
-        markers: this.props.markers
-    } 
-}
+  constructor(props) {
+      super(props)
+      this.state = {
+          query: '',
+          venues: this.props.venues,
+          filteredVenues: this.props.filteredVenues,
+          notVisibleMarkers: [],
+          markers: this.props.markers    } 
+  }
 
     updateQuery = (query) => {
         this.setState({ query: query })
@@ -32,49 +31,59 @@ constructor(props) {
             this.state.notVisibleMarkers.forEach(marker => marker.setVisible(false))
 
             this.setState({ notVisibleMarkers: this.state.notVisibleMarkers })
-        //    this.props.updatePlaces(newPlaces)
         } else {
             this.setState({filteredVenues: this.props.venues})
             this.state.markers.forEach(marker => marker.setVisible(true))
 
         }
+
+
     }
 
-    triggerMarkerClick = (venueId) => {
+ /*   triggerMarkerClick = (venueId) => {
         this.props.markers.map((marker) => {
             if(marker.id === venueId) {
                 window.google.maps.event.trigger(marker, 'click');
             }
-
         })
-    }
+    }*/
 
 /*showVenues = () => {
-    <ul>
-     {this.state.venues.map((myVenue) => {
-            <li role="menuitem"
-             onClick={() => this.triggerMarkerClick(myVenue.venue.id)}
-              aria-label={myVenue.venue.name}
-              tabIndex="0"
-              id={myVenue.venue.id}
-              key={myVenue.venue.id}
-            >
-              <br/>
-              <b>{myVenue.venue.name}</b>
-              <br/> 
-              <i>{myVenue.venue.location.address}</i>
-            </li> 
-        }
-          )}
-     </ul> 
+    /*  <ul>
+               {Array.isArray(this.state.venues)&& (this.state.venues.map((myVenue) => {
+                <li role="menuitem"
+                 onClick={() => this.triggerMarkerClick(myVenue.venue.id)}
+                  aria-label={myVenue.venue.name}
+                  tabIndex="0"
+                  id={myVenue.venue.id}
+                  key={myVenue.venue.id}
+                >
+                  <br/>
+                  <b>{myVenue.venue.name}</b>
+                  <br/> 
+                  <i>{myVenue.venue.location.address}</i>
+                </li> 
+            }
+              )) }
+        </ul> 
+
+                
 }
    */
+
+
+   openMarker = locationId => {
+    this.props.markers.map(marker => {
+      if (marker.id === locationId) {
+        window.google.maps.event.trigger(marker, "click")
+      }
+    })
+  }
+
     render() {
+
         return (
             <aside>
-
-
-
 
 
         <div id="SearchBar" aria-label="Search Bar">
@@ -86,39 +95,30 @@ constructor(props) {
             clearQuery={this.clearQuery}            
             updateQuery={b => this.updateQuery(b)}
             clickLocation={this.clickLocation}
-          />                       
-                       
-
+          />        
    
           </div>
 
 
+                    <ul className="search-result">
+           
+                        {Array.isArray(this.state.filteredVenues) && (this.state.filteredVenues.map((place, index) => (
+                            <li 
+                                id={place.venue.id}
+                                key={place.venue.id}
+                                aria-label={place.venue.name}
+                                tabIndex="0"
+                                className="item" 
+                                onClick={() => { this.openMarker(place.venue.id); }}
+                            >
+                                {place.venue.name}
+                            </li>
+                        )))}
+                    </ul>
+                    
 
-            <div>
-/* here's the problem 
-<ul>
-     {this.state.venues.map((myVenue) => {
-            <li role="menuitem"
-             onClick={() => this.triggerMarkerClick(myVenue.venue.id)}
-              aria-label={myVenue.venue.name}
-              tabIndex="0"
-              id={myVenue.venue.id}
-              key={myVenue.venue.id}
-            >
-              <br/>
-              <b>{myVenue.venue.name}</b>
-              <br/> 
-              <i>{myVenue.venue.location.address}</i>
-            </li> 
-        }
-          )}
-     </ul> 
-              */  
-    </div>        
-        
-            
 
-                
+           
             </aside>
 
         )
