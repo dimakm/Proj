@@ -22,7 +22,7 @@ constructor(props) {
     renderMap = () => {
         var index  = window.document.getElementsByTagName("script")[0]
         var script = window.document.createElement("script")
-        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCElDPaTh_n-WGrsOONc-2eR6eleOkoI-U&callback=initMap"
+        script.src = "https://maps.googleapis.com/maps/api/js?key=[your-key]&callback=initMap"
         script.async = true
         script.defer = true
         script.onerror = function() {
